@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>	
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		#down_page{
+			position:fixed;
+			z-index: -1;
+			top: 0;
+			left: 0;
+		}
+		#down_page img{
+			height: 720px;
+			float: left;
+		}
+		#top_page{
+
+			padding-top: 600px;
+		}
+		#top_page div{
+			width: 100%;
+			height: 300px;
+			color:white;
+			font-size: 50px;
+			text-align: center;
+			padding-top: 200px;
+		}
+		.content1{
+			background-color: #3ee;
+			margin-bottom: 600px;
+		}
+		.content2{
+			background-color: #e9c;
+			margin-bottom: 600px;
+		}
+		.content3{
+			background-color: #e66;
+		}
+	</style>
+</head>
+<body>
+ 	<div class="wrap">
+ 		<!-- 这里是后面的图片层 -->
+ 		<div id="down_page">
+ 			<!-- 放置你所需的图片 -->			
+			<img src="img/down_bg2.jpg" >
+			<img src="img/down_bg1.jpg" >
+			<img src="img/down_bg2.jpg" >
+		</div>
+		<!-- 上面内容层 -->
+		<div id="top_page">
+			<div class="content1">content 1</div>		
+			<div class="content2">content 2</div>		
+			<div class="content3">content 3</div>		
+		</div>		
+ 	</div>	
+	<script>	
+		//获取元素
+		var oDownPage = document.getElementById('down_page');
+		var oTopPage = document.getElementById('top_page');
+		//当浏览器滚动时
+		document.onscroll = function(){
+			//浏览器滚动的距离
+			var scroll_top = document.body.scrollTop;
+			//计算背景高度与前景高度的比例
+			var num = oDownPage.offsetHeight / oTopPage.offsetHeight;
+			//设置背景层滚动的速度
+			oDownPage.style.marginTop = -scroll_top * num + 'px';
+		}
+
+	</script>
+</body>
+</html>
